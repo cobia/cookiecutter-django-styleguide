@@ -1,0 +1,23 @@
+This is my personal method of managing the development and git flow for this cookiecutter. The objective of this flow is to be able to synchronize the main branch from the original repository. The flow is as follows:
+
+1. Fork the cookiecutter-django repository.
+
+2. Run git init locally to initialize a local git reporsitory.
+
+3. git pull https://github.com/cobia/cookiecutter-django
+
+4. Maintain two branches of the cloned repository:
+
+git branch styleguide-dev
+git branch styleguide-merged
+
+5. Maintain two remote origins. One for development, and the other for the merged changes. 
+
+git remote add origin-dev https://github.com/cobia/cookiecutter-django.git
+git remote add origin-merged https://github.com/cobia/cookiecutter-django-styleguide.git
+
+6. Development on branch styleguide-dev should be pushed only to origin-dev, whereas when we are satisfied with the changes on the styleguide-dev, they should be pushed and merged with master on origin-merged.
+
+git checkout styleguide-merged
+git merge styleguide-dev
+git push origin-merged styleguide-merged:master
